@@ -4,12 +4,12 @@ body {
 }
 h1 {
   font-size: 1rem;
-  margin: 3em 0 0;
+  margin: 4em 0 0;
 }
 .scales caption {
   text-align: left;
   font-weight: bold;
-  margin: 1em 0;
+  margin: 2em 0;
 }
 .scales tr:hover {
   background: #ffc;

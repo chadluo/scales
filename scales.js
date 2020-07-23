@@ -10,8 +10,27 @@ const RESOLUTIONS_16_9 = [
   [6016, 3384],
   [7680, 4320],
 ];
+const RESOLUTIONS_16_10 = [
+  [1920, 1200],
+  [2048, 1280],
+  [2304, 1440],
+  [2560, 1600],
+  [2880, 1800],
+  [3072, 1920],
+  [3840, 2400],
+  [4096, 2560],
+  [5120, 3200],
+  [7680, 4800],
+];
+const RESOLUTIONS_ULTRAWIDE = [
+  [2560, 1080],
+  [3440, 1440],
+  [5120, 2160],
+];
 document.addEventListener("DOMContentLoaded", () => {
   renderScaleTable(RESOLUTIONS_16_9, "16:9");
+  renderScaleTable(RESOLUTIONS_16_10, "16:10");
+  renderScaleTable(RESOLUTIONS_ULTRAWIDE, "Ultrawide");
 });
 
 function renderScaleTable(resolutions, caption) {
@@ -33,7 +52,7 @@ function renderScaleTable(resolutions, caption) {
     for (const r of resolutions) {
       if ((r[0] * 100) % scale === 0 && (r[1] * 100) % scale === 0) {
         toInclude = true;
-        row.push(`${(r[0] * 100) / scale} × ${(r[1] * 100) / scale}`);
+        row.push(showResolution(r, scale));
       } else {
         row.push("");
       }
@@ -47,4 +66,12 @@ function renderScaleTable(resolutions, caption) {
     }
   }
   document.body.appendChild(table);
+}
+
+function showResolution(r, scale) {
+  const w = (r[0] * 100) / scale;
+  const h = (r[1] * 100) / scale;
+  let s = `${w} × ${h}`;
+  if (h < 1000) s += " "; // en squad
+  return s;
 }
