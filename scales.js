@@ -25,11 +25,15 @@ const RESOLUTIONS_16_10 = [
 const RESOLUTIONS_ULTRAWIDE = [
   [2560, 1080],
   [3440, 1440],
+  [3440, 1600],
   [3840, 1080],
   [3840, 1200],
+  [3840, 1440],
   [3840, 1600],
+  [4096, 2160],
   [5120, 1440],
   [5120, 2160],
+  [5760, 2160],
 ];
 document.addEventListener("DOMContentLoaded", () => {
   renderScaleTable(RESOLUTIONS_16_9, "16:9");
