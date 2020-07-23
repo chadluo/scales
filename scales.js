@@ -7,14 +7,17 @@ const RESOLUTIONS_16_9 = [
   [3200, 1800],
   [3840, 2160],
   [5120, 2880],
+  [6016, 3384],
   [7680, 4320],
 ];
 document.addEventListener("DOMContentLoaded", () => {
-  renderScaleTable(RESOLUTIONS_16_9);
+  renderScaleTable(RESOLUTIONS_16_9, "16:9");
 });
 
-function renderScaleTable(resolutions) {
-  const table = document.getElementById("scales");
+function renderScaleTable(resolutions, caption) {
+  const table = document.createElement("table");
+  table.classList.add("scales");
+  table.createCaption().textContent = caption;
   const headerRow = table.createTHead();
   const headerCell1 = document.createElement("th");
   headerCell1.innerText = "100";
@@ -24,7 +27,7 @@ function renderScaleTable(resolutions) {
     headerCell.innerText = `${r[0]} × ${r[1]}`;
     headerRow.appendChild(headerCell);
   }
-  for (let scale = 101; scale <= 200; scale++) {
+  for (let scale = 101; scale <= 250; scale++) {
     let toInclude = false;
     const row = [];
     for (const r of resolutions) {
@@ -36,11 +39,12 @@ function renderScaleTable(resolutions) {
       }
     }
     if (toInclude) {
+      const rowElement = table.insertRow();
       const rowHeader = document.createElement("th");
       rowHeader.innerText = scale;
-      const rowElement = table.insertRow();
       rowElement.appendChild(rowHeader);
       for (const c of row) rowElement.insertCell().innerText = c;
     }
   }
+  document.body.appendChild(table);
 }
