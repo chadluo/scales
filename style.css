@@ -1,0 +1,15 @@
+body {
+  font: 16px/1 monospace;
+}
+#scales {
+  margin: auto;
+}
+#scales th {
+  padding-left: 2em;
+}
+#scales th:first-child {
+  padding-left: 0;
+}
+#scales td {
+  text-align: right;
+}

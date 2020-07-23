@@ -1,11 +1,19 @@
 "use strict";
-const resolutions = [
+const RESOLUTIONS_16_9 = [
   [1920, 1080],
+  [2048, 1152],
   [2560, 1440],
+  [2880, 1620],
+  [3200, 1800],
   [3840, 2160],
+  [5120, 2880],
+  [7680, 4320],
 ];
-document.addEventListener("DOMContentLoaded", renderScaleTable);
-function renderScaleTable() {
+document.addEventListener("DOMContentLoaded", () => {
+  renderScaleTable(RESOLUTIONS_16_9);
+});
+
+function renderScaleTable(resolutions) {
   const table = document.getElementById("scales");
   const headerRow = table.createTHead();
   const headerCell1 = document.createElement("th");
