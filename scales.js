@@ -7,30 +7,32 @@ const resolutions = [
 document.addEventListener("DOMContentLoaded", renderScaleTable);
 function renderScaleTable() {
   const table = document.getElementById("scales");
-  const head = table.createTHead();
-  const headerRow = head.insertRow();
-  headerRow.insertCell();
+  const headerRow = table.createTHead();
+  const headerCell1 = document.createElement("th");
+  headerCell1.innerText = "100";
+  headerRow.appendChild(headerCell1);
   for (const r of resolutions) {
-    const cell = headerRow.insertCell();
-    cell.innerText = `${r[0]} × ${r[1]}`;
+    const headerCell = document.createElement("th");
+    headerCell.innerText = `${r[0]} × ${r[1]}`;
+    headerRow.appendChild(headerCell);
   }
   for (let scale = 101; scale <= 200; scale++) {
-    let includes = false;
-    const row = [scale.toString()];
+    let toInclude = false;
+    const row = [];
     for (const r of resolutions) {
       if ((r[0] * 100) % scale === 0 && (r[1] * 100) % scale === 0) {
-        includes = true;
+        toInclude = true;
         row.push(`${(r[0] * 100) / scale} × ${(r[1] * 100) / scale}`);
       } else {
         row.push("");
       }
     }
-    if (includes) {
+    if (toInclude) {
+      const rowHeader = document.createElement("th");
+      rowHeader.innerText = scale;
       const rowElement = table.insertRow();
-      for (let i = 0; i < row.length; i++) {
-        const cell = rowElement.insertCell();
-        cell.innerText = row[i];
-      }
+      rowElement.appendChild(rowHeader);
+      for (const c of row) rowElement.insertCell().innerText = c;
     }
   }
 }
