@@ -52,7 +52,7 @@ function renderScaleTable(resolutions, caption) {
   headerRow.appendChild(headerCell1);
   for (const r of resolutions) {
     const headerCell = document.createElement("th");
-    headerCell.innerText = `${r[0]} × ${r[1]}`;
+    headerCell.innerText = showResolution(r, 100);
     headerRow.appendChild(headerCell);
   }
   for (let scale = 101; scale <= 250; scale++) {
@@ -80,7 +80,7 @@ function renderScaleTable(resolutions, caption) {
 function showResolution(r, scale) {
   const w = (r[0] * 100) / scale;
   const h = (r[1] * 100) / scale;
-  let s = `${w} × ${h}`;
+  let s = `${w}×${h}`;
   if (w < 1000) s = " " + s; // en squad
   return s;
 }
