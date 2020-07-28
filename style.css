@@ -1,6 +1,6 @@
 body {
-  font: 14px/1 "Roboto Mono", monospace;
-  margin: 4em 0 0 min(10em, 10vw);
+  font: 14px/1 "Inconsolata", monospace;
+  margin: 3em 0 0 6em;
 }
 h1 {
   font-size: 1rem;
@@ -15,11 +15,12 @@ h1 {
   background: #ffc;
 }
 .scales th {
-  padding-left: 2em;
+  padding: 0 0 0 2em;
 }
 .scales th:first-child {
   padding-left: 0;
 }
 .scales td {
   text-align: right;
+  padding: 0 1px;
 }
