@@ -14,13 +14,10 @@ h1 {
 .scales tr:hover {
   background: #ffc;
 }
-.scales th {
+.scales th,
+.scales td {
   padding: 0 0 0 2em;
 }
 .scales th:first-child {
   padding-left: 0;
-}
-.scales td {
-  text-align: right;
-  padding: 0 1px;
 }

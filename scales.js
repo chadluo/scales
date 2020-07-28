@@ -80,6 +80,6 @@ function showResolution(r, scale) {
   const w = (r[0] * 100) / scale;
   const h = (r[1] * 100) / scale;
   let s = `${w} × ${h}`;
-  if (h < 1000) s += " "; // en squad
+  if (w < 1000) s = " " + s; // en squad
   return s;
 }
