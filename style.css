@@ -1,3 +1,22 @@
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 body {
   font: 14px/1 "Inconsolata", monospace;
   margin: 3em 0 0 6em;
@@ -11,6 +30,9 @@ h1 {
   font-weight: bold;
   margin: 2em 0;
 }
+.scales thead {
+  font-weight: bold;
+}
 .scales tr:hover {
   background: #ffc;
 }
@@ -20,4 +42,8 @@ h1 {
 }
 .scales th:first-child {
   padding-left: 0;
+}
+footer {
+  font-weight: bold;
+  margin: 3em 0;
 }

@@ -74,7 +74,7 @@ function renderScaleTable(resolutions, caption) {
       for (const c of row) rowElement.insertCell().innerText = c;
     }
   }
-  document.body.appendChild(table);
+  document.getElementsByTagName("footer")[0].before(table);
 }
 
 function showResolution(r, scale) {
