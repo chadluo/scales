@@ -37,12 +37,19 @@ const RESOLUTIONS_ULTRAWIDE = [
   [5760, 2160],
 ];
 document.addEventListener("DOMContentLoaded", () => {
-  renderScaleTable(RESOLUTIONS_16_9, "16:9");
-  renderScaleTable(RESOLUTIONS_16_10, "16:10");
-  renderScaleTable(RESOLUTIONS_ULTRAWIDE, "Ultrawide");
+  const customResolution = document.forms["custom-resolution"];
+  customResolution.before(buildScaleTable(RESOLUTIONS_16_9, "16:9"));
+  customResolution.before(buildScaleTable(RESOLUTIONS_16_10, "16:10"));
+  customResolution.before(buildScaleTable(RESOLUTIONS_ULTRAWIDE, "Ultrawide"));
+  const params = new URLSearchParams(window.location.search);
+  if (params.has("w") && params.get("w") && params.has("h") && params.get("h")) {
+    customResolution.before(buildScaleTable([[params.get("w"), params.get("h")]], "Custom"));
+    customResolution.w.value = params.get("w");
+    customResolution.h.value = params.get("h");
+  }
 });
 
-function renderScaleTable(resolutions, caption) {
+function buildScaleTable(resolutions, caption) {
   const table = document.createElement("table");
   table.classList.add("scales");
   table.createCaption().textContent = caption;
@@ -74,13 +81,13 @@ function renderScaleTable(resolutions, caption) {
       for (const c of row) rowElement.insertCell().innerText = c;
     }
   }
-  document.getElementsByTagName("footer")[0].before(table);
+  return table;
 }
 
 function showResolution(r, scale) {
   const w = (r[0] * 100) / scale;
   const h = (r[1] * 100) / scale;
   let s = `${w}×${h}`;
-  if (w < 1000) s = " " + s; // en squad
+  if (w < 1000) s = " " + s; // en quad
   return s;
 }

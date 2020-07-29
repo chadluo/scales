@@ -5,7 +5,11 @@ tfoot,
 thead,
 tr,
 th,
-td {
+td,
+fieldset,
+form,
+label,
+legend {
   margin: 0;
   padding: 0;
   border: 0;
@@ -42,6 +46,9 @@ h1 {
 }
 .scales th:first-child {
   padding-left: 0;
+}
+form {
+  margin: 3em 0;
 }
 footer {
   font-weight: bold;
