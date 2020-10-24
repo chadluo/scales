@@ -21,7 +21,7 @@ table {
   border-spacing: 0;
 }
 body {
-  font: 14px/1 "Inconsolata", monospace;
+  font: 14px/16px "Iosevka Web", monospace;
   margin: 3em 0 0 6em;
 }
 h1 {
@@ -49,6 +49,10 @@ h1 {
 .scales th:first-child {
   padding-left: 0;
 }
+.scales th:last-child,
+.scales td:last-child {
+  padding-right: 0;
+}
 .scales .lp {
   padding-left: 1.5em;
 }
@@ -58,4 +62,8 @@ form {
 footer {
   font-weight: bold;
   margin: 3em 0;
+}
+:placeholder-shown,
+button {
+  font-family: "Iosevka Web";
 }
