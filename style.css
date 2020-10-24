@@ -18,7 +18,6 @@ legend {
   vertical-align: baseline;
 }
 table {
-  border-collapse: collapse;
   border-spacing: 0;
 }
 body {
@@ -40,12 +39,18 @@ h1 {
 .scales tr:hover {
   background: #ffc;
 }
+.scales td:hover {
+  font-weight: bold;
+}
 .scales th,
 .scales td {
-  padding: 0 0 0 2em;
+  padding: 0 1em;
 }
 .scales th:first-child {
   padding-left: 0;
+}
+.scales .lp {
+  padding-left: 1.5em;
 }
 form {
   margin: 3em 0;

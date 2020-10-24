@@ -1,3 +1,6 @@
+/* eslint no-irregular-whitespace: ["error", { "skipTemplates": true }] */
+/* eslint-env es6 */
+
 "use strict";
 const RESOLUTIONS_16_9 = [
   [1920, 1080],
@@ -68,9 +71,9 @@ function buildScaleTable(resolutions, caption) {
     for (const r of resolutions) {
       if ((r[0] * 100) % scale === 0 && (r[1] * 100) % scale === 0) {
         toInclude = true;
-        row.push(showResolution(r, scale));
+        row.push(r);
       } else {
-        row.push("");
+        row.push(null);
       }
     }
     if (toInclude) {
@@ -78,16 +81,17 @@ function buildScaleTable(resolutions, caption) {
       const rowHeader = document.createElement("th");
       rowHeader.innerText = scale;
       rowElement.appendChild(rowHeader);
-      for (const c of row) rowElement.insertCell().innerText = c;
+      for (const r of row) {
+        const cell = rowElement.insertCell();
+        if (r === null) continue;
+        cell.innerText = showResolution(r, scale);
+        if (r[0] / scale < 10) cell.className = "lp";
+      }
     }
   }
   return table;
 }
 
 function showResolution(r, scale) {
-  const w = (r[0] * 100) / scale;
-  const h = (r[1] * 100) / scale;
-  let s = `${w}×${h}`;
-  if (w < 1000) s = " " + s; // en quad
-  return s;
+  return `${(r[0] * 100) / scale}×${(r[1] * 100) / scale}`;
 }
